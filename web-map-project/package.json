@@ -1,0 +1,14 @@
+{
+  "name": "web-map-project",
+  "version": "1.0.0",
+  "description": "A web project displaying a map of La Coruña-Bogotá with interactive buttons.",
+  "main": "src/js/main.js",
+  "scripts": {
+    "start": "live-server src"
+  },
+  "dependencies": {
+    "leaflet": "^1.7.1"
+  },
+  "author": "Michael Rojas",
+  "license": "MIT"
+}
