@@ -1,0 +1,7 @@
+Vitacora de trabajo Michael Rojas
+
+1. Crear el repositorio y empezar a crear los archivos para el frontend y backend
+2. Agilizar la creacion de archivos html. js. y css usando el paradigma de programación conversacional
+3. Luego de generado el cascaron, realice ajustes para cuadrar el centro del mapa en el barrio y agregar el poligono manual correctamente
+4. Ahora, empezar con el boton arboles, use el shp y configure para que quede como cluster puntos ya que hay muchos arboles dentro del area del barrio
+5. Ahora la distancia, 
