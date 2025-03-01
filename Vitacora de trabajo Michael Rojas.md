@@ -23,3 +23,4 @@ decido recortarlo al area de interes y convertirlo a geojson para que sea mas ra
 #Descargo geojson de los barrios para la coruña
 ##Usar funcion await async en js para darle tiempo a ejecutar a las funciones y que cargue el mapa
 #Crear boton y asignar manejador de eventos
+#Ahora usar python para usar los shape de los arboles
