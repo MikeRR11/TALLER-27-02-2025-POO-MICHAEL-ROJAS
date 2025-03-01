@@ -34,3 +34,8 @@ Estan en datos abiertos de bogota   https://datosabiertos.bogota.gov.co/dataset/
 ## Descargar los datos filtrados desde la API (servicio REST)
 nos podemos conectar con cualquier lenguaje que admita conexiones de red
 
+
+### CLASE 01/03
+
+#Agregamos los arboles y los estilos para los botones
+

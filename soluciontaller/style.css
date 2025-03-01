@@ -1,13 +1,28 @@
 #map {
-    height: 90vh; /* Adjusted height to ensure the map is visible */
+    height: 1000px; /* Adjusted height to ensure the map is visible */
     width: 100%;
     position: relative;
     z-index: 1;
     bottom: 0px;
 }
 #buttonContainer {
-    position: relative;
-    top: 10px;
-    left: 10px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
     z-index: 1000;
+}
+
+.buttons{
+    color: aquamarine;
+    background-color: black;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    z-index: 1001;
 }
