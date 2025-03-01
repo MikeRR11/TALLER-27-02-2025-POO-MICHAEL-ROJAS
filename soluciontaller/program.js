@@ -24,4 +24,13 @@ loadPolygon();
 
 let btnTrees = document.getElementById("btnTrees");
 
-btnTrees.addEventListener("click", async () => alert("Hola mundo"));
+btnTrees.addEventListener("click", async function() {
+    let myData = await fetch("arboles_coruna.geojson");
+    // await se usa para esperar a que la sentencia se
+    // resuelva antes de continuar con la ejecución
+    let myPolygon = await myData.json();
+
+    L.geoJSON(myPolygon, {
+        style: { color: 'blue' }
+    }).addTo(map);
+});
