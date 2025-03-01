@@ -24,3 +24,10 @@ decido recortarlo al area de interes y convertirlo a geojson para que sea mas ra
 ##Usar funcion await async en js para darle tiempo a ejecutar a las funciones y que cargue el mapa
 #Crear boton y asignar manejador de eventos
 #Ahora usar python para usar los shape de los arboles
+
+## PROLEMA 6, GEOJSON DE ARBOLES DE BOGOTÁ
+
+Utlizamos servicio rest de geovisor - API
+creamos bounding box de mi barrio
+Estan en datos abiertos de bogota   https://datosabiertos.bogota.gov.co/dataset/censo-arbolado-urbano/resource/2c0d5b2c-dc4c-448b-9573-25864525845c
+
