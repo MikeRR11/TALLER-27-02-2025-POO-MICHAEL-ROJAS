@@ -93,14 +93,14 @@ generatePDF(distances, trees.length);
 
 function generatePDF(distances, totalTrees) {
     // desestructurar el objeto jsPDF
-    let { jsPDF } = window.jspdf;
+    let { jsPDF } = window.jsPDF;
     let documentPDF = new jsPDF();
-    documentPDF.autoTable(
+    documentPDF.autotable(
         //hacer tabla con autotable
         {
-            head: [['Arbol A', 'Arbol B', 'Distancia']],
-            body: distances
+        head: [['Arbol A', 'Arbol B', 'Distancia']],
+        body: distances
         }
     );
-    documentPDF.save("distancias_arboles.pdf");   
+    documentPFD.save("distancias_arboles.pdf");   
 }
