@@ -30,6 +30,8 @@ pdf.cell(0, 10, 'Distancia entre Árboles', 0, 1, 'C')
 
 pdf.set_font('Arial', '', 10)
 for index, d in enumerate(distances):
+    if index > 0 and index % 40 == 0:  # Add a new page after 40 entries
+        pdf.add_page()
     pdf.cell(0, 10, f"{index + 1}. {d['tree1']} - {d['tree2']}: {d['distance']}", 0, 1)
 
 pdf.output('distancia_entre_arboles.pdf')
