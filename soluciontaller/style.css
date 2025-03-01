@@ -1,0 +1,13 @@
+#map {
+    height: 90vh; /* Adjusted height to ensure the map is visible */
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    bottom: 0px;
+}
+#buttonContainer {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}

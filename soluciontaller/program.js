@@ -11,6 +11,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 let loadPolygon = async function() {
     let myData = await fetch("coruna.geojson");
+    // await se usa para esperar a que la sentencia se
+    // resuelva antes de continuar con la ejecución
     let myPolygon = await myData.json();
 
     L.geoJSON(myPolygon, {
@@ -19,3 +21,7 @@ let loadPolygon = async function() {
 };
 
 loadPolygon();
+
+let btnTrees = document.getElementById("btnTrees");
+
+btnTrees.addEventListener("click", async () => alert("Hola mundo"));
