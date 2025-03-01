@@ -13,4 +13,5 @@ Vitacora de trabajo Michael Rojas
 decido recortarlo al area de interes y convertirlo a geojson para que sea mas rapido
 #Realizando las correcciones, todo funciona mas rapido para mostrar los arboles, ahora retomar el boton de distancia arboles
 #Haciendo el reajuste para que distancia arboles admita el geojson, ya se genera un pdf pero esta vacio...
-#
+#En la pagina del laboratorio de bogota no está el barrio la coruña
+#Usar funcion await async en js para darle tiempo a ejecutar a las funciones
