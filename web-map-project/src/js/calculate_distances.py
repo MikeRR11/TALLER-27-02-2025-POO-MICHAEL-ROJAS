@@ -34,4 +34,4 @@ for index, d in enumerate(distances):
         pdf.add_page()
     pdf.cell(0, 10, f"{index + 1}. {d['tree1']} - {d['tree2']}: {d['distance']}", 0, 1)
 
-pdf.output('distancia_entre_arboles.pdf')
+pdf.output('/path/to/web-map-project/src/js/distancia_entre_arboles.pdf')

@@ -3,7 +3,7 @@
 // Event handler for the "Distancia entre Árboles" button
 
 document.getElementById('distancia-arboles').addEventListener('click', function() {
-    fetch('/web-map-project/src/js/calculate_distances.py') // Asegúrate de que la ruta sea correcta
+    fetch('/path/to/web-map-project/src/js/distancia_entre_arboles.pdf') // Asegúrate de que la ruta sea correcta
         .then(response => response.blob())
         .then(blob => {
             const url = window.URL.createObjectURL(blob);
