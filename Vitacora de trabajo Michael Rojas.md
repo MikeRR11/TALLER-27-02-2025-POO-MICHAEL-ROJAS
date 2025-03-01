@@ -31,3 +31,6 @@ Utlizamos servicio rest de geovisor - API
 creamos bounding box de mi barrio
 Estan en datos abiertos de bogota   https://datosabiertos.bogota.gov.co/dataset/censo-arbolado-urbano/resource/2c0d5b2c-dc4c-448b-9573-25864525845c
 
+## Descargar los datos filtrados desde la API (servicio REST)
+nos podemos conectar con cualquier lenguaje que admita conexiones de red
+
