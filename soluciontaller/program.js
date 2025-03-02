@@ -53,50 +53,58 @@ btnTrees.addEventListener("click", async function() {
 let btnDistance= document.getElementById("btnDistance");
 
 btnDistance.addEventListener('click',
-    async ()=>{
-        let response= await fetch("arboles_coruna.geojson");
-        let datos= await response.json();
-        let trees= datos.features.map((myElement, index)=>({
-            id: index+1,
+    async () => {
+        console.log("Button clicked");
+        let response = await fetch("arboles_coruna.geojson");
+        let datos = await response.json();
+        let trees = datos.features.map((myElement, index) => ({
+            id: index + 1,
             coordinates: myElement.geometry.coordinates
-        }));        
+        }));
 
-        let distances=[];
-        trees.forEach( (treeA)=>{trees.forEach(
+        let distances = [];
+        let i = 0, j = 1;
 
-            
-                (treeB)=>{
-                    if(treeA.id != treeB.id){
-                        let distance = turf.distance( 
-                            turf.point(treeA.coordinates),
-                            turf.point(treeB.coordinates),
-                        );
-                        distances.push(
-                            [
-                                `Árbol ${treeA.id}`,
-                                `Árbol ${treeB.id}`,
-                                distance.toFixed(3)                            
-                            ]
-                        )
+        function calculateDistances() {
+            if (i < trees.length) {
+                if (j < trees.length) {
+                    let distance = turf.distance(
+                        turf.point(trees[i].coordinates),
+                        turf.point(trees[j].coordinates)
+                    );
+                    distances.push([
+                        `Árbol ${trees[i].id}`,
+                        `Árbol ${trees[j].id}`,
+                        distance.toFixed(3)
+                    ]);
+                    console.log(`Distance calculated between Árbol ${trees[i].id} and Árbol ${trees[j].id}: ${distance.toFixed(3)}`);
+                    j++;
+                } else {
+                    i++;
+                    j = i + 1;
                 }
+                requestAnimationFrame(calculateDistances);
+            } else {
+                console.log("Distances calculated", distances);
+                generatePDF(distances, trees.length);
             }
-            )
         }
-        )
-        generatePDF(distances, trees.lenght);
-    }
-)
-function generatePDF(distances, totalTrees){
-    let { jsPDF } = window.jspdf;
-    let documentPDF= new jsPDF();   
-    
-    documentPDF.text("REPORTE DE ÁRBOLES EN EL BARRIO GRAN BRITALIA", 10,10);
 
-    documentPDF.autoTable(
-        {
-            head: [['Árbol 1', 'Árbol 2', 'Distance']],
-            body: distances
-        }
-    );
-    documentPDF.save("britalia.pdf")
+        calculateDistances();
+    }
+);
+
+function generatePDF(distances, totalTrees) {
+    console.log("Generating PDF");
+    let { jsPDF } = window.jspdf;
+    let documentPDF = new jsPDF();
+
+    documentPDF.text("REPORTE DE ÁRBOLES EN EL BARRIO GRAN BRITALIA", 10, 10);
+
+    documentPDF.autoTable({
+        head: [['Árbol 1', 'Árbol 2', 'Distancia']],
+        body: distances
+    });
+    documentPDF.save("britalia.pdf");
+    console.log("PDF generated");
 }
