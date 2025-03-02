@@ -22,17 +22,21 @@ let loadPolygon = async function() {
 
 loadPolygon();
 
+let treesLayer;
+let siniestrosLayer;
+
 let btnTrees = document.getElementById("btnTrees");
 //idealmente funcion asincrona para que cargue bien el shape
 
 btnTrees.addEventListener("click", async function() {
-    let myData = await fetch("arboles_coruna.geojson");
-    // await se usa para esperar a que la sentencia se
-    // resuelva antes de continuar con la ejecución
-    let myPolygon = await myData.json();
+    if (treesLayer) {
+        map.removeLayer(treesLayer);
+        treesLayer = null;
+    } else {
+        let myData = await fetch("arboles_coruna.geojson");
+        let myPolygon = await myData.json();
 
-    L.geoJSON(myPolygon, 
-        {
+        treesLayer = L.geoJSON(myPolygon, {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, {
                     radius: 5,
@@ -43,10 +47,10 @@ btnTrees.addEventListener("click", async function() {
                     fillOpacity: 0.8
                 });
             }
-        }
-    ).addTo(map);
-}
-);
+        }).addTo(map);
+    }
+});
+
 //Ahora hacer el boton  de distancia de los arboles
 
 ////////////////////////////////
@@ -95,15 +99,17 @@ function generatePDF(distances, totalTrees) {
 
 let btnSiniestros = document.getElementById("btnSiniestros");
 //idealmente funcion asincrona para que cargue bien el shape
+//Boton siniestros viales
 
 btnSiniestros.addEventListener("click", async function() {
-    let myData = await fetch("siniestros_bogota_d.c.geojson");
-    // await se usa para esperar a que la sentencia se
-    // resuelva antes de continuar con la ejecución
-    let myPolygon = await myData.json();
+    if (siniestrosLayer) {
+        map.removeLayer(siniestrosLayer);
+        siniestrosLayer = null;
+    } else {
+        let myData = await fetch("siniestros_bogota_d.c.geojson");
+        let myPolygon = await myData.json();
 
-    L.geoJSON(myPolygon, 
-        {
+        siniestrosLayer = L.geoJSON(myPolygon, {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, {
                     radius: 5,
@@ -114,7 +120,6 @@ btnSiniestros.addEventListener("click", async function() {
                     fillOpacity: 0.8
                 });
             }
-        }
-    ).addTo(map);
-}
-);
+        }).addTo(map);
+    }
+});
