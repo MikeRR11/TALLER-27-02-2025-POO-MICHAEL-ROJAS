@@ -62,35 +62,18 @@ btnDistance.addEventListener('click',
             coordinates: myElement.geometry.coordinates
         }));
 
-        let distances = [];
-        let i = 0, j = 1;
+        if (window.Worker) {
+            const worker = new Worker('distanceWorker.js');
+            worker.postMessage(trees);
 
-        function calculateDistances() {
-            if (i < trees.length) {
-                if (j < trees.length) {
-                    let distance = turf.distance(
-                        turf.point(trees[i].coordinates),
-                        turf.point(trees[j].coordinates)
-                    );
-                    distances.push([
-                        `Árbol ${trees[i].id}`,
-                        `Árbol ${trees[j].id}`,
-                        distance.toFixed(3)
-                    ]);
-                    console.log(`Distance calculated between Árbol ${trees[i].id} and Árbol ${trees[j].id}: ${distance.toFixed(3)}`);
-                    j++;
-                } else {
-                    i++;
-                    j = i + 1;
-                }
-                requestAnimationFrame(calculateDistances);
-            } else {
+            worker.onmessage = function(e) {
+                const distances = e.data;
                 console.log("Distances calculated", distances);
                 generatePDF(distances, trees.length);
-            }
+            };
+        } else {
+            console.error("Web Workers are not supported in this browser.");
         }
-
-        calculateDistances();
     }
 );
 
