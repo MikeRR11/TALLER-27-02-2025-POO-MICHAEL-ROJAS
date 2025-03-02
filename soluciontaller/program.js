@@ -91,3 +91,30 @@ function generatePDF(distances, totalTrees) {
     documentPDF.save("Arboles_Coruña.pdf");
     console.log("PDF generated");
 }
+
+
+let btnSiniestros = document.getElementById("btnSiniestros");
+//idealmente funcion asincrona para que cargue bien el shape
+
+btnSiniestros.addEventListener("click", async function() {
+    let myData = await fetch("siniestros_bogota_d.c.geojson");
+    // await se usa para esperar a que la sentencia se
+    // resuelva antes de continuar con la ejecución
+    let myPolygon = await myData.json();
+
+    L.geoJSON(myPolygon, 
+        {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, {
+                    radius: 5,
+                    fillColor: "red",
+                    color: "black",
+                    weight: 1,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                });
+            }
+        }
+    ).addTo(map);
+}
+);

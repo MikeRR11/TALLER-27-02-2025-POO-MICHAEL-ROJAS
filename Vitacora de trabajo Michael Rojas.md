@@ -38,4 +38,13 @@ nos podemos conectar con cualquier lenguaje que admita conexiones de red
 ### CLASE 01/03
 
 #Agregamos los arboles y los estilos para los botones
+#Agregamos los arboles haciendo un recorte con un bounding box para delimitar el area del barrio usando python
+#Usamos jsPDF y autotable para generar el informe
+#En mi caso particular tengo muchos arboles (mas de 2000) se demora demasiado
+
+# Trabajo independiente
+#Luego de la clase, elimino los arvoles que tienen menos de 1.5, dejando 250 arboles
+#Sigue demorando demasiado, así que con la ayuda de la IA, genero un an archivo worker para hacer los calculos en paralelo, de esta manera se genera el reporte al instante
+#Ahora el boton de los homicidios del barrio
+#Primero buscar un geojson de homicidios, si hay
 
