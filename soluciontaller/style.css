@@ -1,5 +1,11 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 #map {
-    height: 1000px; /* Adjusted height to ensure the map is visible */
+    height: 99%; /* Adjusted height to ensure the map is visible */
     width: 100%;
     position: relative;
     z-index: 1;

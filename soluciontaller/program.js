@@ -22,21 +22,17 @@ let loadPolygon = async function() {
 
 loadPolygon();
 
-let treesLayer;
-let siniestrosLayer;
-
 let btnTrees = document.getElementById("btnTrees");
 //idealmente funcion asincrona para que cargue bien el shape
 
 btnTrees.addEventListener("click", async function() {
-    if (treesLayer) {
-        map.removeLayer(treesLayer);
-        treesLayer = null;
-    } else {
-        let myData = await fetch("arboles_coruna.geojson");
-        let myPolygon = await myData.json();
+    let myData = await fetch("arboles_coruna.geojson");
+    // await se usa para esperar a que la sentencia se
+    // resuelva antes de continuar con la ejecución
+    let myPolygon = await myData.json();
 
-        treesLayer = L.geoJSON(myPolygon, {
+    L.geoJSON(myPolygon, 
+        {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, {
                     radius: 5,
@@ -47,10 +43,10 @@ btnTrees.addEventListener("click", async function() {
                     fillOpacity: 0.8
                 });
             }
-        }).addTo(map);
-    }
-});
-
+        }
+    ).addTo(map);
+}
+);
 //Ahora hacer el boton  de distancia de los arboles
 
 ////////////////////////////////
@@ -86,7 +82,7 @@ function generatePDF(distances, totalTrees) {
     let { jsPDF } = window.jspdf;
     let documentPDF = new jsPDF();
 
-    documentPDF.text("REPORTE DE ÁRBOLES EN EL BARRIO LA CORUÑA / CDAD BOLIVAR", 10, 10);
+    documentPDF.text("REPORTE DE ÁRBOLES EN EL BARRIO GRAN BRITALIA", 10, 10);
 
     documentPDF.autoTable({
         head: [['Árbol 1', 'Árbol 2', 'Distancia (metros)']],
@@ -99,17 +95,15 @@ function generatePDF(distances, totalTrees) {
 
 let btnSiniestros = document.getElementById("btnSiniestros");
 //idealmente funcion asincrona para que cargue bien el shape
-//Boton siniestros viales
 
 btnSiniestros.addEventListener("click", async function() {
-    if (siniestrosLayer) {
-        map.removeLayer(siniestrosLayer);
-        siniestrosLayer = null;
-    } else {
-        let myData = await fetch("siniestros_bogota_d.c.geojson");
-        let myPolygon = await myData.json();
+    let myData = await fetch("siniestros_bogota_d.c.geojson");
+    // await se usa para esperar a que la sentencia se
+    // resuelva antes de continuar con la ejecución
+    let myPolygon = await myData.json();
 
-        siniestrosLayer = L.geoJSON(myPolygon, {
+    L.geoJSON(myPolygon, 
+        {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, {
                     radius: 5,
@@ -120,6 +114,7 @@ btnSiniestros.addEventListener("click", async function() {
                     fillOpacity: 0.8
                 });
             }
-        }).addTo(map);
-    }
-});
+        }
+    ).addTo(map);
+}
+);
