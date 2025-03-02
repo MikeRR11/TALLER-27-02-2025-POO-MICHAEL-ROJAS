@@ -47,4 +47,9 @@ nos podemos conectar con cualquier lenguaje que admita conexiones de red
 #Sigue demorando demasiado, así que con la ayuda de la IA, genero un an archivo worker para hacer los calculos en paralelo, de esta manera se genera el reporte al instante
 #Ahora el boton de los homicidios del barrio
 #Primero buscar un geojson de homicidios, si hay
+#No se encuentra en geometria tipo punto, entonces uso uno de siniestros viales
+#Aplico la misma logica que se uso para los arboles, recorto a la extension del barrio y luego agrego el boton y su event listener
+#Ya esta listo, ahora agrego mas cosas para mejorar el producto final
+#Modifico la fuente y los botones para que queden centrados, agrego animaciones para que se vea profesional
+#Agrego funcionalidad de que si ya estan cargados los geojson, al presionar el mismo boton se remueve la capa
 
