@@ -85,9 +85,9 @@ function generatePDF(distances, totalTrees) {
     documentPDF.text("REPORTE DE ÁRBOLES EN EL BARRIO GRAN BRITALIA", 10, 10);
 
     documentPDF.autoTable({
-        head: [['Árbol 1', 'Árbol 2', 'Distancia']],
+        head: [['Árbol 1', 'Árbol 2', 'Distancia (metros)']],
         body: distances
     });
-    documentPDF.save("britalia.pdf");
+    documentPDF.save("Arboles_Coruña.pdf");
     console.log("PDF generated");
 }
