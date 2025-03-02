@@ -86,7 +86,7 @@ function generatePDF(distances, totalTrees) {
     let { jsPDF } = window.jspdf;
     let documentPDF = new jsPDF();
 
-    documentPDF.text("REPORTE DE ÁRBOLES EN EL BARRIO GRAN BRITALIA", 10, 10);
+    documentPDF.text("REPORTE DE ÁRBOLES EN EL BARRIO LA CORUÑA / CDAD BOLIVAR", 10, 10);
 
     documentPDF.autoTable({
         head: [['Árbol 1', 'Árbol 2', 'Distancia (metros)']],
