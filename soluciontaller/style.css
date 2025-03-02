@@ -4,17 +4,24 @@
     position: relative;
     z-index: 1;
     bottom: 0px;
-}
-#buttonContainer {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 1000;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.buttons{
-    color: aquamarine;
-    background-color: black;
+#buttonContainer {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+}
+
+.buttons {
+    color: #fff;
+    background-color: #343a40;
     border: none;
     padding: 10px 20px;
     text-align: center;
@@ -23,6 +30,18 @@
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    z-index: 1001;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.buttons:hover {
+    background-color: #495057;
+    transform: scale(1.05);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
 }
