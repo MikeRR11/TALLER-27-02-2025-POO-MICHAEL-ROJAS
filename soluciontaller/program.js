@@ -1,18 +1,17 @@
-// Ensure jsPDF is available globally
+// Asegurar que jsPDF esté disponible globalmente
 window.jsPDF = window.jspdf.jsPDF;
 
-// Initialize the Leaflet map and set the view to La Coruña-Bogotá
-const map = L.map('map').setView([4.5786, -74.15265], 17); // Coordinates for La Coruña-Bogotá
+// Inicializar el mapa de Leaflet y establecer la vista en La Coruña-Bogotá
+const map = L.map('map').setView([4.5786, -74.15265], 17); // Coordenadas para La Coruña-Bogotá
 
-// Add OpenStreetMap tile layer
+// Añadir capa de mosaico de OpenStreetMap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
 }).addTo(map);
 
 let loadPolygon = async function() {
     let myData = await fetch("coruna.geojson");
-    // await se usa para esperar a que la sentencia se
-    // resuelva antes de continuar con la ejecución
+    // await se usa para esperar a que la sentencia se resuelva antes de continuar con la ejecución
     let myPolygon = await myData.json();
 
     L.geoJSON(myPolygon, {
@@ -22,19 +21,19 @@ let loadPolygon = async function() {
 
 loadPolygon();
 
-// Variables to store the layers
+// Variables para almacenar las capas
 let treesLayer;
 let siniestrosLayer;
 
 let btnTrees = document.getElementById("btnTrees");
-// Add event listener for the Trees button
+// Añadir event listener para el botón de Árboles
 btnTrees.addEventListener("click", async function() {
     if (treesLayer) {
-        // If the trees layer is already loaded, remove it from the map
+        // Si la capa de árboles ya está cargada, eliminarla del mapa
         map.removeLayer(treesLayer);
         treesLayer = null;
     } else {
-        // If the trees layer is not loaded, fetch and add it to the map
+        // Si la capa de árboles no está cargada, obtenerla y añadirla al mapa
         let myData = await fetch("arboles_coruna.geojson");
         let myPolygon = await myData.json();
 
@@ -53,7 +52,7 @@ btnTrees.addEventListener("click", async function() {
     }
 });
 
-// Add event listener for the Distance button
+// Añadir event listener para el botón de Distancias
 let btnDistance = document.getElementById("btnDistance");
 
 btnDistance.addEventListener('click', async () => {
@@ -79,7 +78,7 @@ btnDistance.addEventListener('click', async () => {
     }
 });
 
-// Function to generate PDF report
+// Función para generar el informe en PDF
 function generatePDF(distances, totalTrees) {
     console.log("Generating PDF");
     let { jsPDF } = window.jspdf;
@@ -96,14 +95,14 @@ function generatePDF(distances, totalTrees) {
 }
 
 let btnSiniestros = document.getElementById("btnSiniestros");
-// Add event listener for the Siniestros button
+// Añadir event listener para el botón de Siniestros
 btnSiniestros.addEventListener("click", async function() {
     if (siniestrosLayer) {
-        // If the siniestros layer is already loaded, remove it from the map
+        // Si la capa de siniestros ya está cargada, eliminarla del mapa
         map.removeLayer(siniestrosLayer);
         siniestrosLayer = null;
     } else {
-        // If the siniestros layer is not loaded, fetch and add it to the map
+        // Si la capa de siniestros no está cargada, obtenerla y añadirla al mapa
         let myData = await fetch("siniestros_bogota_d.c.geojson");
         let myPolygon = await myData.json();
 
