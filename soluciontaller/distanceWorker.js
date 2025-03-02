@@ -8,12 +8,13 @@ self.onmessage = function(e) {
         for (let j = i + 1; j < trees.length; j++) {
             let distance = turf.distance(
                 turf.point(trees[i].coordinates),
-                turf.point(trees[j].coordinates)
+                turf.point(trees[j].coordinates),
+                { units: 'meters' } // Especificar unidades en metros
             );
             distances.push([
                 `Árbol ${trees[i].id}`,
                 `Árbol ${trees[j].id}`,
-                distance.toFixed(3)
+                distance.toFixed(3) // Redondear a tres decimales
             ]);
         }
     }
