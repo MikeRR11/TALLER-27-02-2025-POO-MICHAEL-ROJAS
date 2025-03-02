@@ -4,9 +4,10 @@ window.jsPDF = window.jspdf.jsPDF;
 // Initialize the Leaflet map and set the view to La Coruña-Bogotá
 const map = L.map('map').setView([4.5786, -74.15265], 17); // Coordinates for La Coruña-Bogotá
 
-// Add OpenStreetMap tile layer
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+// Add Esri satellite tile layer
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{x}/{y}', {
     maxZoom: 20,
+    attribution: 'Tiles © Esri'
 }).addTo(map);
 
 let loadPolygon = async function() {
